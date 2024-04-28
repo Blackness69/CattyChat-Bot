@@ -31,8 +31,7 @@ if not DISCORD_BOT_TOKEN:
 MAX_HISTORY = os.getenv("MAX_HISTORY")
 if not MAX_HISTORY:
     with open('MAX_HISTORY.txt', 'r') as f:
-        MAX_HISTORY = int(f.read())
-
+        MAX_HISTORY = int(f.read().strip())
 #CUSTOM_PERSONALITY = os.getenv("CUSTOM_PERSONALITY") --- this shit is disgusting asf and booring old skill for custom personality fuck it and fuck you if u enable it (gonna update it soon & set chatbo)
 
 
