@@ -21,17 +21,24 @@ load_dotenv()
 GOOGLE_AI_KEY = os.getenv("GOOGLE_AI_KEY")
 if not GOOGLE_AI_KEY:
     with open('GOOGLE_AI_KEY.txt', 'r') as f:
-        GOOGLE_AI_KEY = f.read()
+        GOOGLE_AI_KEY = f.read().strip()  # Strip to remove any leading/trailing whitespaces
 
 DISCORD_BOT_TOKEN = os.getenv("DISCORD_BOT_TOKEN")
 if not DISCORD_BOT_TOKEN:
     with open('DISCORD_BOT_TOKEN.txt', 'r') as f:
-        DISCORD_BOT_TOKEN = f.read()
+        DISCORD_BOT_TOKEN = f.read().strip()
 
 MAX_HISTORY = os.getenv("MAX_HISTORY")
-if not MAX_HISTORY:
-    with open('MAX_HISTORY.txt', 'r') as f:
-        MAX_HISTORY = int(f.read())
+if MAX_HISTORY is None:
+    try:
+        with open('MAX_HISTORY.txt', 'r') as f:
+            MAX_HISTORY = int(f.read().strip())
+    except (ValueError, FileNotFoundError):
+        MAX_HISTORY = 10  # Set to default value if MAX_HISTORY.txt doesn't contain a valid integer or file not found
+
+# MAX_HISTORY is guaranteed to be an integer at this point 
+
+
 #CUSTOM_PERSONALITY = os.getenv("CUSTOM_PERSONALITY") --- this shit is disgusting asf and booring old skill for custom personality fuck it and fuck you if u enable it (gonna update it soon & set chatbo)
 
 
