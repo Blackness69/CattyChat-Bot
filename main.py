@@ -19,8 +19,19 @@ bot = commands.Bot(command_prefix="/", intents=intents, heartbeat_timeout=60)
 load_dotenv()
 
 GOOGLE_AI_KEY = os.getenv("GOOGLE_AI_KEY")
+if not GOOGLE_AI_KEY:
+    with open('GOOGLE_AI_KEY.txt', 'r') as f:
+        GOOGLE_AI_KEY = f.read()
+
 DISCORD_BOT_TOKEN = os.getenv("DISCORD_BOT_TOKEN")
-MAX_HISTORY = int(os.getenv("MAX_HISTORY"))
+if not DISCORD_BOT_TOKEN:
+    with open('DISCORD_BOT_TOKEN.txt', 'r') as f:
+        DISCORD_BOT_TOKEN = f.read()
+
+MAX_HISTORY = os.getenv("MAX_HISTORY")
+if not MAX_HISTORY:
+    with open('MAX_HISTORY.txt', 'r') as f:
+        MAX_HISTORY = int(f.read())
 
 #CUSTOM_PERSONALITY = os.getenv("CUSTOM_PERSONALITY") --- this shit is disgusting asf and booring old skill for custom personality fuck it and fuck you if u enable it (gonna update it soon & set chatbo)
 
