@@ -1,4 +1,3 @@
-import aiohttp
 import os
 import io
 import json
